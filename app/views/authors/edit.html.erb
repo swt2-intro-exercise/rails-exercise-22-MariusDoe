@@ -1,0 +1,31 @@
+<h1>New author</h1>
+
+<% if @author.errors.any? %>
+    errors:
+    <ul>
+        <% @author.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model: @author, local: true) do |form| %>
+    <p>
+        <%= form.label :first_name %><br>
+        <%= form.text_field :first_name %>
+    </p>
+
+    <p>
+        <%= form.label :last_name %><br>
+        <%= form.text_field :last_name %>
+    </p>
+
+    <p>
+        <%= form.label :homepage %><br>
+        <%= form.text_field :homepage %>
+    </p>
+
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
