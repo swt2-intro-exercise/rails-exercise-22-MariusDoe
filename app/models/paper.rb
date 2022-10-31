@@ -11,4 +11,6 @@ class Paper < ApplicationRecord
         numericality: true
 
     has_and_belongs_to_many :authors
+
+    scope :year, ->(year) { where("year = ?", year) if year.present? }
 end
