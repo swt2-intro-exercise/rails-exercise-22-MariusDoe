@@ -16,4 +16,12 @@ describe "Authors index page", type: :feature do
     visit authors_path
     expect(page).to have_link "Edit", href: edit_author_path(@alan)
   end
+
+  it "has links to delete the authors" do
+    @alan = FactoryBot.create :author
+    count = Author.count
+    visit authors_path
+    find('a[data-turbo-method="delete"]').click
+    expect(Author.count).to be < count
+  end
 end
