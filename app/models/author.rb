@@ -3,6 +3,8 @@ class Author < ApplicationRecord
         presence: true,
         length: { minimum: 1 }
 
+    has_and_belongs_to_many :papers
+
     def name
         return "#{self.first_name} #{self.last_name}"
     end
