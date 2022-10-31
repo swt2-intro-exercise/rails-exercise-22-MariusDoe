@@ -13,4 +13,10 @@ describe "Show author page", type: :feature do
     expect(page).to have_text("Turing")
     expect(page).to have_text("http://wikipedia.de/Alan_Turing")
   end
+
+  it "links to the author's edit page" do
+    @alan = FactoryBot.create :author
+    visit author_path(@alan)
+    expect(page).to have_link "Edit", href: edit_author_path(@alan)
+  end
 end
